@@ -28,3 +28,6 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+- Keep the original lawyer portrait as a bundled image import for external-host portability; Lovable's origin-relative asset endpoint is not served by Vercel.
+- Derive the favicon from the existing RA monogram, preserving the text-based header and footer branding.

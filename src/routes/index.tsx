@@ -17,7 +17,7 @@ import {
   ArrowRight,
   MessageCircle,
 } from "lucide-react";
-import ramon from "@/assets/ramon-alves.png.asset.json";
+import ramon from "@/assets/ramon-alves.png";
 import arquitetura from "@/assets/arquitetura.jpg";
 
 const WA =
@@ -182,7 +182,7 @@ function Index() {
           <div className="relative mx-auto max-w-[18rem] sm:max-w-sm lg:mr-0 lg:ml-auto lg:max-w-[82%]">
             <div className="absolute -right-4 -bottom-4 h-full w-full border border-gold md:-right-6 md:-bottom-6" />
             <img
-              src={ramon.url}
+              src={ramon}
               alt="Advogado Ramon Alves"
               className="relative h-auto w-full"
               width={1265}
