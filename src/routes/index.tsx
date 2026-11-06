@@ -179,12 +179,12 @@ function Index() {
           </p>
         </div>
         <div className="reveal order-1 lg:order-2">
-          <div className="relative mx-auto max-w-md lg:max-w-none">
+          <div className="relative mx-auto max-w-[18rem] sm:max-w-sm lg:mr-0 lg:ml-auto lg:max-w-[82%]">
             <div className="absolute -right-4 -bottom-4 h-full w-full border border-gold md:-right-6 md:-bottom-6" />
             <img
               src={ramon.url}
               alt="Advogado Ramon Alves"
-              className="relative aspect-[4/5] w-full object-cover object-top"
+              className="relative h-auto w-full"
               width={1265}
               height={1244}
             />
@@ -340,7 +340,7 @@ function Index() {
           <iframe
             title="Mapa do escritório"
             src={`https://www.google.com/maps?q=${encodeURIComponent(ADDRESS)}&output=embed`}
-            className="min-h-[420px] w-full border border-border grayscale"
+            className="min-h-[420px] w-full border border-border"
             loading="lazy"
           />
         </div>
