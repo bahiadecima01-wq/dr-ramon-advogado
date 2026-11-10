@@ -12,3 +12,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://dr-ramon-advogado.lovable.app/sitemap.xml

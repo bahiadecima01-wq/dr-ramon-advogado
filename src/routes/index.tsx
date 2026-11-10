@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import ramon from "@/assets/ramon-alves.png";
 import arquitetura from "@/assets/arquitetura.jpg";
+import { HOME_URL, SHARE_IMAGE_URL, SEO_TITLE, SEO_DESCRIPTION, legalService } from "@/lib/seo";
 
 const WA =
   "https://wa.me/5573988662627?text=" +
@@ -29,22 +30,40 @@ const ADDRESS =
   "Edifício Palazzo Itália, Av. 22 de Abril, Sala 03, Centro, Porto Seguro - BA, 45810-000";
 
 export const Route = createFileRoute("/")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
-      { title: "Ramon Alves Advocacia | Direito Imobiliário em Porto Seguro – BA" },
+      { title: SEO_TITLE },
       {
         name: "description",
         content:
-          "Assessoria jurídica em Direito Imobiliário, Contratos, Família e Sucessões em Porto Seguro/BA. Atendimento presencial e online.",
+          SEO_DESCRIPTION,
       },
-      { property: "og:title", content: "Ramon Alves Advocacia" },
+      { property: "og:title", content: SEO_TITLE },
       {
         property: "og:description",
-        content: "Segurança jurídica para proteger seu patrimônio e seus negócios.",
+        content: SEO_DESCRIPTION,
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "robots", content: "index, follow, max-image-preview:large" },
+      { property: "og:url", content: HOME_URL },
+      { property: "og:locale", content: "pt_BR" },
+      { property: "og:site_name", content: "Ramon Alves Advocacia" },
+      { property: "og:image", content: SHARE_IMAGE_URL },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "Retrato do advogado Ramon Alves" },
+      { name: "twitter:title", content: SEO_TITLE },
+      { name: "twitter:description", content: SEO_DESCRIPTION },
+      { name: "twitter:image", content: SHARE_IMAGE_URL },
+      { name: "twitter:image:alt", content: "Retrato do advogado Ramon Alves" },
     ],
+    links: [
+      { rel: "canonical", href: HOME_URL },
+      { rel: "preload", as: "image", href: ramon, fetchpriority: "high" },
+    ],
+    scripts: [{ type: "application/ld+json", children: JSON.stringify(legalService) }],
   }),
   component: Index,
 });
@@ -110,7 +129,7 @@ function Header() {
     <header className="fixed inset-x-0 top-0 z-40 border-b border-border/60 bg-background/90 backdrop-blur">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
         <Logo />
-        <nav className="hidden items-center gap-9 lg:flex">
+        <nav aria-label="Navegação principal" className="hidden items-center gap-9 lg:flex">
           {nav.map(([l, h]) => (
             <a key={h} href={h} className="text-xs uppercase tracking-[0.18em] text-foreground/70 transition-colors hover:text-primary">
               {l}
@@ -120,12 +139,12 @@ function Header() {
             WhatsApp
           </a>
         </nav>
-        <button aria-label="Abrir menu" className="lg:hidden" onClick={() => setOpen(!open)}>
+        <button aria-label={open ? "Fechar menu" : "Abrir menu"} aria-expanded={open} aria-controls="menu-movel" className="lg:hidden" onClick={() => setOpen(!open)}>
           {open ? <X className="h-6 w-6 text-primary" /> : <Menu className="h-6 w-6 text-primary" />}
         </button>
       </div>
       {open && (
-        <nav className="border-t border-border bg-background px-6 py-6 lg:hidden">
+        <nav id="menu-movel" aria-label="Navegação principal móvel" className="border-t border-border bg-background px-6 py-6 lg:hidden">
           {nav.map(([l, h]) => (
             <a key={h} href={h} onClick={() => setOpen(false)} className="block border-b border-border py-4 font-serif text-2xl text-primary">
               {l}
@@ -154,6 +173,7 @@ function Index() {
   return (
     <div id="topo" className="bg-background text-foreground">
       <Header />
+      <main>
 
       {/* Hero */}
       <section className="mx-auto grid max-w-7xl items-center gap-14 px-6 pt-32 pb-20 lg:grid-cols-[1.1fr_1fr] lg:pt-40 lg:pb-28">
@@ -184,6 +204,7 @@ function Index() {
             <img
               src={ramon}
               alt="Advogado Ramon Alves"
+              fetchPriority="high"
               className="relative h-auto w-full"
               width={1265}
               height={1244}
@@ -363,6 +384,7 @@ function Index() {
       </section>
 
       {/* Footer */}
+      </main>
       <footer className="bg-foreground py-16 text-background">
         <div className="mx-auto grid max-w-7xl gap-12 px-6 md:grid-cols-4">
           <div className="md:col-span-1">

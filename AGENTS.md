@@ -31,3 +31,6 @@ use the editor.
 
 - Keep the original lawyer portrait as a bundled image import for external-host portability; Lovable's origin-relative asset endpoint is not served by Vercel.
 - Derive the favicon from the existing RA monogram, preserving the text-based header and footer branding.
+- Use the shared public-origin SEO configuration for canonical, social metadata, structured data and sitemap; update the static robots sitemap directive on domain changes so crawlers use the same origin.
+- Derive sitemap entries from explicit required route decisions using the versioned helper, excluding endpoint routes and omitting lastmod without authoritative page-specific dates.
+- Keep share-sized portrait derivatives separate from the bundled on-page original so SEO does not alter the visible photograph.
