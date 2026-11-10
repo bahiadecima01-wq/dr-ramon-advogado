@@ -7,7 +7,7 @@
 
 # SEO implementation
 
-- [ ] Add homepage metadata, configurable canonical origin and existing-photo share image.
-- [ ] Add local LegalService data and semantic/accessibility improvements without changing visible content.
-- [ ] Install router-derived sitemap and preserve crawler permissions with a sitemap reference.
-- [ ] Verify metadata, crawler files, structured data, links and unchanged desktop/mobile appearance.
+- [x] Add homepage metadata, configurable canonical origin and existing-photo share image.
+- [x] Add local LegalService data and semantic/accessibility improvements without changing visible content.
+- [x] Install router-derived sitemap and preserve crawler permissions with a sitemap reference.
+- [x] Verify metadata, crawler files, structured data, links and unchanged desktop/mobile appearance; six tests passed and all three baseline screenshots matched exactly.
