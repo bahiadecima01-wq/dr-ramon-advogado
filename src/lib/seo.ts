@@ -13,7 +13,7 @@ export function resolveSiteOrigin(value: string | undefined): string {
 }
 
 // Public build-time configuration, shared by metadata and the sitemap.
-export const SITE_ORIGIN = resolveSiteOrigin(import.meta.env.VITE_SITE_URL);
+export const SITE_ORIGIN = resolveSiteOrigin(import.meta.env['VITE_SITE_URL']);
 export const HOME_URL = `${SITE_ORIGIN}/`;
 export const SHARE_IMAGE_URL = `${SITE_ORIGIN}/ramon-alves-compartilhamento.jpg`;
 export const SEO_TITLE = "Ramon Alves Advocacia | Advogado Imobiliário em Porto Seguro";
