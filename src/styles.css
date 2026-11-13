@@ -52,6 +52,8 @@
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
   --color-gold: var(--gold);
+  --color-brand-surface: var(--brand-surface);
+  --color-brand-foreground: var(--brand-foreground);
   --color-navy: var(--navy);
   --color-navy-foreground: var(--navy-foreground);
   --font-serif: "Cormorant Garamond", Georgia, serif;
@@ -67,29 +69,31 @@
 }
 
 :root {
+  --brand-surface: oklch(0.248 0 0);
+  --brand-foreground: oklch(0.975 0.003 230);
   --radius: 0.125rem;
-  --background: oklch(0.973 0.003 106);
-  --foreground: oklch(0.205 0 0);
-  --card: oklch(0.99 0.002 106);
+  --background: oklch(0.975 0.003 230);
+  --foreground: oklch(0.248 0 0);
+  --card: oklch(1 0 0);
   --card-foreground: oklch(0.205 0 0);
   --popover: oklch(0.99 0.002 106);
   --popover-foreground: oklch(0.205 0 0);
-  --primary: oklch(0.225 0.04 262);
-  --primary-foreground: oklch(0.973 0.003 106);
-  --secondary: oklch(0.94 0.006 90);
-  --secondary-foreground: oklch(0.225 0.04 262);
-  --muted: oklch(0.94 0.006 90);
-  --muted-foreground: oklch(0.48 0.012 260);
-  --accent: oklch(0.69 0.06 75);
+  --primary: oklch(0.49 0.085 215);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.946 0.012 220);
+  --secondary-foreground: oklch(0.248 0 0);
+  --muted: oklch(0.946 0.012 220);
+  --muted-foreground: oklch(0.46 0.018 220);
+  --accent: oklch(0.81 0.083 216);
   --accent-foreground: oklch(0.205 0 0);
-  --gold: oklch(0.69 0.06 75);
-  --navy: oklch(0.225 0.04 262);
-  --navy-foreground: oklch(0.973 0.003 106);
+  --gold: oklch(0.49 0.085 215);
+  --navy: oklch(0.248 0 0);
+  --navy-foreground: oklch(0.975 0.003 230);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.88 0.008 90);
-  --input: oklch(0.88 0.008 90);
-  --ring: oklch(0.69 0.06 75);
+  --border: oklch(0.87 0.012 220);
+  --input: oklch(0.78 0.022 220);
+  --ring: oklch(0.49 0.085 215);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -154,7 +158,7 @@
 @layer base {
   html { scroll-behavior: smooth; }
   body { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
-  h1, h2, h3 { font-family: var(--font-serif); font-weight: 500; letter-spacing: -0.01em; }
+  h1, h2, h3 { font-family: var(--font-serif); font-weight: 500; letter-spacing: 0; }
 }
 @utility eyebrow {
   font-family: var(--font-sans);
@@ -167,3 +171,12 @@
   animation: reveal 0.9s cubic-bezier(.2,.7,.2,1) both;
 }
 @keyframes reveal { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+/* Official identity: cyan accents on charcoal, petroleum on light surfaces. */
+.bg-navy, .bg-brand-surface { --gold: var(--accent); }
+section[id] { scroll-margin-top: 6rem; }
+a:focus-visible { outline: 2px solid var(--ring); outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

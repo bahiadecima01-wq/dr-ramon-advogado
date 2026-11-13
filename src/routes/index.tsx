@@ -19,6 +19,10 @@ import {
 } from "lucide-react";
 import ramon from "@/assets/ramon-alves.png";
 import arquitetura from "@/assets/arquitetura.jpg";
+import officialLogo from "@/assets/ramon-alves-logo-oficial.png";
+import { Button } from "@/components/ui/button";
+import { WhatsAppContactForm } from "@/components/whatsapp-contact-form";
+import { InstagramReels } from "@/components/instagram-reels";
 import { HOME_URL, SHARE_IMAGE_URL, SEO_TITLE, SEO_DESCRIPTION, legalService } from "@/lib/seo";
 
 const WA =
@@ -90,35 +94,26 @@ function Btn({
   const styles = {
     solid: "bg-primary text-primary-foreground hover:bg-foreground",
     outline: "border border-primary/30 text-primary hover:border-primary hover:bg-primary/5",
-    gold: "bg-gold text-foreground hover:bg-background",
+    gold: "bg-accent text-foreground hover:bg-background",
     ghostLight: "border border-navy-foreground/30 text-navy-foreground hover:border-gold hover:text-gold",
   }[variant];
   return (
+    <Button asChild variant="ghost" className={`group h-auto whitespace-normal rounded-md px-7 py-4 text-xs font-medium uppercase tracking-[0.18em] transition-all duration-300 ${styles}`}>
     <a
       href={href}
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      className={`group inline-flex items-center justify-center gap-3 px-7 py-4 text-xs font-medium uppercase tracking-[0.18em] transition-all duration-300 ${styles}`}
     >
       {children}
       <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
     </a>
+    </Button>
   );
 }
 
-function Logo({ light }: { light?: boolean }) {
+function Logo() {
   return (
-    <a href="#topo" className="flex items-center gap-3">
-      <span
-        className={`grid h-10 w-10 shrink-0 place-items-center border font-serif text-lg italic ${light ? "border-gold text-gold" : "border-primary text-primary"}`}
-      >
-        RA
-      </span>
-      <span className="leading-none">
-        <span className={`block font-serif text-lg tracking-[0.2em] ${light ? "text-navy-foreground" : "text-primary"}`}>
-          RAMON ALVES
-        </span>
-        <span className="mt-1 block text-[0.6rem] tracking-[0.45em] text-gold">ADVOCACIA</span>
-      </span>
+    <a href="#topo" aria-label="Ramon Alves Advocacia — início" className="shrink-0">
+      <img src={officialLogo} alt="Logo oficial Ramon Alves Advocacia" width={387} height={173} className="h-auto w-[148px] sm:w-[166px]" />
     </a>
   );
 }
@@ -126,22 +121,22 @@ function Logo({ light }: { light?: boolean }) {
 function Header() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="fixed inset-x-0 top-0 z-40 border-b border-border/60 bg-background/90 backdrop-blur">
+    <header className="fixed inset-x-0 top-0 z-40 border-b border-border/60 bg-brand-surface text-brand-foreground">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
         <Logo />
-        <nav aria-label="Navegação principal" className="hidden items-center gap-9 lg:flex">
+        <nav aria-label="Navegação principal" className="hidden items-center gap-6 lg:flex">
           {nav.map(([l, h]) => (
-            <a key={h} href={h} className="text-xs uppercase tracking-[0.18em] text-foreground/70 transition-colors hover:text-primary">
+            <a key={h} href={h} className="text-xs uppercase tracking-[0.18em] text-brand-foreground/85 transition-colors hover:text-accent">
               {l}
             </a>
           ))}
-          <a href={WA} target="_blank" rel="noopener noreferrer" className="border border-primary px-5 py-2.5 text-xs uppercase tracking-[0.18em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground">
+          <a href={WA} target="_blank" rel="noopener noreferrer" className="border border-accent/60 px-5 py-2.5 text-xs uppercase tracking-[0.18em] text-accent transition-colors hover:bg-primary hover:text-primary-foreground">
             WhatsApp
           </a>
         </nav>
-        <button aria-label={open ? "Fechar menu" : "Abrir menu"} aria-expanded={open} aria-controls="menu-movel" className="lg:hidden" onClick={() => setOpen(!open)}>
-          {open ? <X className="h-6 w-6 text-primary" /> : <Menu className="h-6 w-6 text-primary" />}
-        </button>
+        <Button variant="ghost" size="icon" aria-label={open ? "Fechar menu" : "Abrir menu"} aria-expanded={open} aria-controls="menu-movel" className="text-accent hover:bg-primary lg:hidden" onClick={() => setOpen(!open)}>
+          {open ? <X className="h-6 w-6 text-accent" /> : <Menu className="h-6 w-6 text-accent" />}
+        </Button>
       </div>
       {open && (
         <nav id="menu-movel" aria-label="Navegação principal móvel" className="border-t border-border bg-background px-6 py-6 lg:hidden">
@@ -211,7 +206,7 @@ function Index() {
             />
             <div className="absolute -left-4 bottom-8 bg-primary px-6 py-4 md:-left-8">
               <p className="font-serif text-xl text-primary-foreground">Ramon Alves</p>
-              <p className="text-[0.65rem] uppercase tracking-[0.3em] text-gold">Advogado</p>
+              <p className="text-[0.65rem] uppercase tracking-[0.3em] text-accent">Advogado</p>
             </div>
           </div>
         </div>
@@ -272,7 +267,7 @@ function Index() {
       </section>
 
       {/* Imobiliário */}
-      <section id="imobiliario" className="bg-primary py-24 md:py-32">
+      <section id="imobiliario" className="bg-navy py-24 md:py-32">
         <div className="mx-auto grid max-w-7xl items-center gap-16 px-6 lg:grid-cols-2">
           <img src={arquitetura} alt="Arquitetura residencial contemporânea" loading="lazy" width={1280} height={1600} className="aspect-[4/5] w-full object-cover" />
           <div>
@@ -329,6 +324,8 @@ function Index() {
         </div>
       </section>
 
+      <InstagramReels />
+
       {/* Contato */}
       <section id="contato" className="border-t border-border bg-card py-24 md:py-32">
         <div className="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-2">
@@ -365,10 +362,11 @@ function Index() {
             loading="lazy"
           />
         </div>
+        <div className="mx-auto max-w-7xl px-6"><WhatsAppContactForm /></div>
       </section>
 
       {/* CTA */}
-      <section className="bg-primary py-24 md:py-32">
+      <section className="bg-navy py-24 md:py-32">
         <div className="mx-auto max-w-4xl px-6 text-center">
           <span className="mx-auto block h-12 w-px bg-gold" />
           <h2 className="mt-10 text-4xl leading-tight text-primary-foreground md:text-5xl">
@@ -385,10 +383,10 @@ function Index() {
 
       {/* Footer */}
       </main>
-      <footer className="bg-foreground py-16 text-background">
+      <footer className="bg-brand-surface py-16 text-brand-foreground">
         <div className="mx-auto grid max-w-7xl gap-12 px-6 md:grid-cols-4">
           <div className="md:col-span-1">
-            <Logo light />
+            <Logo />
             <p className="mt-6 text-sm text-background/60">Porto Seguro – Bahia</p>
           </div>
           <div>
@@ -418,7 +416,7 @@ function Index() {
         </div>
         <div className="mx-auto mt-14 flex max-w-7xl flex-col justify-between gap-4 border-t border-background/10 px-6 pt-8 text-xs text-background/50 sm:flex-row">
           <p>© {new Date().getFullYear()} Ramon Alves Advocacia. Todos os direitos reservados.</p>
-          <p className="font-serif italic tracking-widest text-gold">Ramon Alves</p>
+          <a href="https://www.instagram.com/ramonalvesadvocacia/" target="_blank" rel="noopener noreferrer" className="text-accent">Instagram</a>
         </div>
       </footer>
 
@@ -430,7 +428,7 @@ function Index() {
         aria-label="Conversar pelo WhatsApp"
         className="fixed right-5 bottom-5 z-50 flex items-center gap-3 rounded-full border border-gold bg-primary py-3.5 pr-5 pl-4 text-primary-foreground shadow-2xl transition-transform hover:-translate-y-1 md:right-8 md:bottom-8"
       >
-        <MessageCircle className="h-5 w-5 text-gold" />
+        <MessageCircle className="h-5 w-5 text-accent" />
         <span className="hidden text-xs uppercase tracking-[0.18em] sm:inline">WhatsApp</span>
       </a>
     </div>

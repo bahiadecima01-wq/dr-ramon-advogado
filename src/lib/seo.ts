@@ -26,6 +26,8 @@ export const legalService = {
   name: "Ramon Alves Advocacia",
   url: HOME_URL,
   image: SHARE_IMAGE_URL,
+  logo: `${SITE_ORIGIN}/ramon-alves-logo-oficial.png`,
+  sameAs: ["https://www.instagram.com/ramonalvesadvocacia/"],
   telephone: "+5573988662627",
   address: {
     "@type": "PostalAddress",

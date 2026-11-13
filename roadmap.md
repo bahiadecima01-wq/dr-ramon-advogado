@@ -1,3 +1,10 @@
+# Official identity and website update
+
+- [x] Apply supplied official logo and palette, keeping photographs and existing content.
+- [x] Add validated WhatsApp handoff form without storing personal information.
+- [x] Add the four selected Instagram Reels with official embeds and direct-link fallbacks.
+- [x] Verify form, links, navigation, assets and desktop/tablet/mobile layouts; all four official embeds rendered, WhatsApp opened with entered data and 11 tests passed.
+
 # Asset corrections
 
 - [x] Recover the original portrait and use a portable bundled image reference.
