@@ -1,3 +1,9 @@
+# Three targeted website updates
+
+- [x] Replace Reel placeholders with supplied local covers and direct publication links.
+- [x] Move the single WhatsApp form immediately after the hero, preserving validation and handoff.
+- [x] Add the discreet Baze Mkt footer credit; desktop/tablet/mobile layouts, five service options and personalized WhatsApp handoff verified, with 11 tests passing.
+
 # Official identity and website update
 
 - [x] Apply supplied official logo and palette, keeping photographs and existing content.

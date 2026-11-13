@@ -36,4 +36,4 @@ use the editor.
 - Keep share-sized portrait derivatives separate from the bundled on-page original so SEO does not alter the visible photograph.
 
 - Keep WhatsApp contact validation and URL construction in a browser-safe tested helper; this user-chosen handoff has no storage or server submission.
-- Load official Instagram iframe embeds on visitor request and retain direct publication links; cross-origin restrictions prevent reliable detection of blocked content.
+- Bundle manually selected Reel covers as local image imports linked directly to their publications; this keeps the gallery portable to external hosts without embeds or feed integrations.

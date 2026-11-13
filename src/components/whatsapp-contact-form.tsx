@@ -22,7 +22,7 @@ export function WhatsAppContactForm() {
     window.open(createContactWhatsAppUrl(result.data), "_blank", "noopener,noreferrer");
   }
   return (
-    <div className="mt-16 grid gap-10 border-t border-border pt-12 lg:grid-cols-2 lg:gap-16">
+    <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
       <div>
         <MessageCircle className="h-7 w-7 text-primary" strokeWidth={1.5} />
         <h2 className="mt-5 text-4xl text-foreground">Solicite um atendimento</h2>

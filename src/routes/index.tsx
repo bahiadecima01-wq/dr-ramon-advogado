@@ -212,6 +212,10 @@ function Index() {
         </div>
       </section>
 
+      <section id="solicitar-atendimento" className="border-t border-border bg-card py-16 md:py-20">
+        <div className="mx-auto max-w-7xl px-6"><WhatsAppContactForm /></div>
+      </section>
+
       {/* Sobre */}
       <section id="escritorio" className="border-t border-border bg-card py-24 md:py-32">
         <div className="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-[1fr_1.2fr]">
@@ -362,7 +366,6 @@ function Index() {
             loading="lazy"
           />
         </div>
-        <div className="mx-auto max-w-7xl px-6"><WhatsAppContactForm /></div>
       </section>
 
       {/* CTA */}
@@ -417,6 +420,9 @@ function Index() {
         <div className="mx-auto mt-14 flex max-w-7xl flex-col justify-between gap-4 border-t border-background/10 px-6 pt-8 text-xs text-background/50 sm:flex-row">
           <p>© {new Date().getFullYear()} Ramon Alves Advocacia. Todos os direitos reservados.</p>
           <a href="https://www.instagram.com/ramonalvesadvocacia/" target="_blank" rel="noopener noreferrer" className="text-accent">Instagram</a>
+        </div>
+        <div className="mx-auto mt-6 max-w-7xl px-6 text-xs text-brand-foreground/70 sm:text-right">
+          <a href="https://baze-mkt.vercel.app/" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-accent">Criado por Baze Mkt</a>
         </div>
       </footer>
 
