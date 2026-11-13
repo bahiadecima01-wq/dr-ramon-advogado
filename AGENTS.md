@@ -36,4 +36,4 @@ use the editor.
 - Keep share-sized portrait derivatives separate from the bundled on-page original so SEO does not alter the visible photograph.
 
 - Keep WhatsApp contact validation and URL construction in a browser-safe tested helper; this user-chosen handoff has no storage or server submission.
-- Bundle manually selected Reel covers locally and load official Instagram iframe players only after a play request, retaining direct publication fallbacks because cross-origin playback restrictions cannot be reliably detected.
+- Bundle manually selected Reel covers locally as accessible external publication links with decorative play overlays; avoid embedded players so the gallery remains portable and independent of Instagram playback restrictions.

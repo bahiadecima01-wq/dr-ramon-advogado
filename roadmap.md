@@ -1,3 +1,7 @@
+# Final Reel gallery adjustment
+
+- [x] Remove embedded players, retain original covers and open each publication externally with an always-visible lower-left play overlay; desktop/tablet/mobile/narrow layouts and all four new-tab clicks verified, with five existing contact tests passing.
+
 # Three targeted website updates
 
 - [x] Restore visitor-requested official Reel players with existing covers and direct-link fallbacks; all four iframe requests verified without navigation, playback remains subject to Instagram restrictions.
