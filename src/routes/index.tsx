@@ -386,7 +386,7 @@ function Index() {
 
       {/* Footer */}
       </main>
-      <footer className="bg-brand-surface py-16 text-brand-foreground">
+      <footer className="bg-brand-surface pt-16 text-brand-foreground">
         <div className="mx-auto grid max-w-7xl gap-12 px-6 md:grid-cols-4">
           <div className="md:col-span-1">
             <Logo />
@@ -421,8 +421,8 @@ function Index() {
           <p>© {new Date().getFullYear()} Ramon Alves Advocacia. Todos os direitos reservados.</p>
           <a href="https://www.instagram.com/ramonalvesadvocacia/" target="_blank" rel="noopener noreferrer" className="text-accent">Instagram</a>
         </div>
-        <div className="mx-auto mt-6 max-w-7xl px-6 text-xs text-brand-foreground/70 sm:text-right">
-          <a href="https://baze-mkt.vercel.app/" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-accent">Criado por Baze Mkt</a>
+        <div className="mt-8 w-full bg-background px-6 py-6 text-center text-sm text-foreground">
+          <a href="https://baze-mkt.vercel.app/" target="_blank" rel="noopener noreferrer" className="font-normal transition-opacity hover:opacity-80">Criado por <span className="font-bold text-primary">Baze Mkt</span></a>
         </div>
       </footer>
 

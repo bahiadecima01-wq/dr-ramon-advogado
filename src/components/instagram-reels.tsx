@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Instagram, Play, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { selectedReels } from "@/lib/whatsapp-contact";
@@ -14,14 +15,24 @@ const covers = [
 ] as const;
 
 function Reel({ id, index }: { id: string; index: number }) {
+  const [requested, setRequested] = useState(false);
   const cover = covers[index];
   if (!cover) return null;
   const url = `https://www.instagram.com/reel/${id}/`;
   return (
-    <a href={url} target="_blank" rel="noopener noreferrer" aria-label={`Assistir no Instagram: ${cover.alt}`} className="group relative block overflow-hidden rounded-md transition-transform duration-300 hover:-translate-y-1">
-      <img src={cover.src} alt={cover.alt} width={cover.width} height={cover.height} loading="lazy" className="aspect-[7/10] w-full object-contain" />
-      <span aria-hidden="true" className="absolute right-3 bottom-3 flex h-10 w-10 items-center justify-center rounded-full border border-brand-foreground/40 bg-brand-surface/80 text-brand-foreground transition-colors group-hover:text-accent"><Play className="h-4 w-4 fill-current" /></span>
-    </a>
+    <div className="min-w-0">
+      <div className="relative aspect-[7/10] overflow-hidden rounded-md">
+        {requested ? (
+          <iframe title={`Instagram Reel: ${cover.alt}`} src={`${url}embed/`} loading="lazy" className="absolute inset-0 h-full w-full border-0 bg-card" allow="encrypted-media; fullscreen" referrerPolicy="strict-origin-when-cross-origin" />
+        ) : (
+          <>
+            <img src={cover.src} alt={cover.alt} width={cover.width} height={cover.height} loading="lazy" className="h-full w-full object-contain" />
+            <Button variant="ghost" size="icon" aria-label={`Reproduzir Reel: ${cover.alt}`} onClick={() => setRequested(true)} className="absolute top-1/2 left-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border border-brand-foreground/60 bg-brand-surface/85 text-brand-foreground transition-colors hover:bg-brand-surface hover:text-accent"><Play className="h-5 w-5 fill-current" /></Button>
+          </>
+        )}
+      </div>
+      {requested && <Button asChild variant="link" className="mt-2 h-auto w-full whitespace-normal px-0 text-xs"><a href={url} target="_blank" rel="noopener noreferrer">Assistir no Instagram <ArrowUpRight className="h-3 w-3" /></a></Button>}
+    </div>
   );
 }
 

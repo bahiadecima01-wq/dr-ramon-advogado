@@ -1,5 +1,8 @@
 # Three targeted website updates
 
+- [x] Restore visitor-requested official Reel players with existing covers and direct-link fallbacks; all four iframe requests verified without navigation, playback remains subject to Instagram restrictions.
+- [x] Center the footer credit on a light bottom strip with charcoal text and bold petroleum agency name; desktop/tablet/mobile centering and 11 existing tests verified.
+
 - [x] Replace Reel placeholders with supplied local covers and direct publication links.
 - [x] Move the single WhatsApp form immediately after the hero, preserving validation and handoff.
 - [x] Add the discreet Baze Mkt footer credit; desktop/tablet/mobile layouts, five service options and personalized WhatsApp handoff verified, with 11 tests passing.
