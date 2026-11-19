@@ -37,3 +37,6 @@
 - [x] Add local LegalService data and semantic/accessibility improvements without changing visible content.
 - [x] Install router-derived sitemap and preserve crawler permissions with a sitemap reference.
 - [x] Verify metadata, crawler files, structured data, links and unchanged desktop/mobile appearance; six tests passed and all three baseline screenshots matched exactly.
+# Smooth intro reveal
+
+- [x] Replace the abrupt symbol appearance with a 1.2s ease-in-out fade-in plus 95%→100% scale, hold to 2.5s and a 0.5s fade-out, keeping the three-second total; timeline measured in the browser at desktop and with reduced motion, 19 tests passing.
