@@ -181,8 +181,8 @@ function Index() {
         <img src={corporateHero} alt="Fachada de arquitetura contemporânea — imagem ilustrativa" width={1920} height={1024} fetchPriority="high" className="absolute inset-0 -z-20 h-full w-full object-cover" />
         <div className="hero-overlay absolute inset-0 -z-10" />
         <div className="mx-auto w-full max-w-7xl px-6 py-10 md:py-20">
-          <p className="mb-6 flex items-center gap-4 text-xs font-medium uppercase text-accent"><span className="h-px w-10 bg-accent" />Advocacia em Porto Seguro</p>
-          <h1 className="max-w-3xl text-4xl font-medium leading-tight md:text-5xl lg:text-6xl">Ramon Alves Advocacia</h1>
+          <p className="mb-6 flex items-center gap-4 text-xs font-medium uppercase text-accent"><span className="h-px w-10 bg-accent" />Ramon Alves Advocacia</p>
+          <h1 className="max-w-3xl text-4xl font-medium leading-tight md:text-5xl lg:text-6xl">Advocacia Imobiliária, Família e Sucessões em Porto Seguro</h1>
           <p className="mt-5 max-w-2xl font-serif text-2xl leading-snug text-primary-foreground md:text-3xl">Segurança jurídica para decisões que constroem o futuro.</p>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-primary-foreground/90">Atuação jurídica pautada pela responsabilidade, atenção aos detalhes e soluções alinhadas às necessidades de cada cliente.</p>
           <SiteSearch />
