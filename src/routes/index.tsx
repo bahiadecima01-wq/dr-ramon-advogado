@@ -194,10 +194,6 @@ function Index() {
         </div>
       </section>
 
-      <section id="solicitar-atendimento" tabIndex={-1} className="border-t border-border bg-card py-16 md:py-20">
-        <div className="mx-auto max-w-7xl px-6"><WhatsAppContactForm /></div>
-      </section>
-
       {/* Sobre */}
       <section id="escritorio" tabIndex={-1} className="border-t border-border bg-card py-24 md:py-32">
         <div className="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-[1fr_1.2fr]">
@@ -292,6 +288,10 @@ function Index() {
             <Button asChild variant="outline" className="h-12 px-5"><a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn — perfil profissional de Ramon Alves"><Linkedin />LinkedIn<ArrowUpRight /></a></Button>
           </div>
         </div>
+      </section>
+
+      <section id="solicitar-atendimento" tabIndex={-1} className="border-t border-border bg-card py-16 md:py-20">
+        <div className="mx-auto max-w-7xl px-6"><WhatsAppContactForm /></div>
       </section>
 
       {/* Contato */}

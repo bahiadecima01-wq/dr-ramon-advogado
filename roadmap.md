@@ -40,3 +40,7 @@
 # Smooth intro reveal
 
 - [x] Replace the abrupt symbol appearance with a 1.2s ease-in-out fade-in plus 95%→100% scale, hold to 2.5s and a 0.5s fade-out, keeping the three-second total; timeline measured in the browser at desktop and with reduced motion, 19 tests passing.
+
+# Contact form relocation
+
+- [x] Move the single existing WhatsApp form immediately before the location/Google Maps section, keeping its two-column layout, fields, validation and handoff; section order, single instance, popup message and 12 tests verified.
