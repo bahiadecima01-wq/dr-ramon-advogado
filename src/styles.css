@@ -187,8 +187,20 @@ section[id] { scroll-margin-top: 6rem; }
 .practice-section { --gold: var(--accent); }
 .footer-links a { color: var(--brand-foreground); transition: color 180ms ease; }
 .footer-links a:hover { color: var(--accent); }
-.branded-loading { transition: opacity 350ms ease, visibility 350ms ease; }
-.branded-loading[data-ready="true"] { opacity: 0; visibility: hidden; }
+.branded-loading-symbol { opacity: 0; }
+.branded-loading[data-started="true"] { animation: intro-screen 3s linear both; }
+.branded-loading[data-started="true"] .branded-loading-symbol { animation: intro-symbol 3s ease-in-out both; }
+@keyframes intro-screen {
+  0%, 83.333333% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+@keyframes intro-symbol {
+  0%, 100% { opacity: 0; }
+  16.666667%, 83.333333% { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .branded-loading-symbol { opacity: 1; }
+}
 @media (max-width: 640px) { .corporate-hero { min-height: 610px; } }
 a:focus-visible { outline: 2px solid var(--ring); outline-offset: 4px; }
 @media (prefers-reduced-motion: reduce) {
