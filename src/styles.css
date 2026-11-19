@@ -54,6 +54,9 @@
   --color-gold: var(--gold);
   --color-brand-surface: var(--brand-surface);
   --color-brand-foreground: var(--brand-foreground);
+  --color-petroleum-deep: var(--petroleum-deep);
+  --color-hero-search: var(--hero-search);
+  --shadow-search: var(--search-shadow);
   --color-navy: var(--navy);
   --color-navy-foreground: var(--navy-foreground);
   --font-serif: "Cormorant Garamond", Georgia, serif;
@@ -69,6 +72,10 @@
 }
 
 :root {
+  --petroleum-deep: oklch(0.31 0.047 215);
+  --hero-search: oklch(0.27 0.046 215 / 85%);
+  --hero-overlay: oklch(0.24 0.043 215 / 72%);
+  --search-shadow: 0 12px 32px oklch(0.2 0.02 215 / 18%);
   --brand-surface: oklch(0.248 0 0);
   --brand-foreground: oklch(0.975 0.003 230);
   --radius: 0.125rem;
@@ -175,6 +182,14 @@
 /* Official identity: cyan accents on charcoal, petroleum on light surfaces. */
 .bg-navy, .bg-brand-surface { --gold: var(--accent); }
 section[id] { scroll-margin-top: 6rem; }
+.corporate-hero { min-height: min(680px, calc(100svh - 160px)); }
+.hero-overlay { background: var(--hero-overlay); }
+.practice-section { --gold: var(--accent); }
+.footer-links a { color: var(--brand-foreground); transition: color 180ms ease; }
+.footer-links a:hover { color: var(--accent); }
+.branded-loading { transition: opacity 350ms ease, visibility 350ms ease; }
+.branded-loading[data-ready="true"] { opacity: 0; visibility: hidden; }
+@media (max-width: 640px) { .corporate-hero { min-height: 610px; } }
 a:focus-visible { outline: 2px solid var(--ring); outline-offset: 4px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

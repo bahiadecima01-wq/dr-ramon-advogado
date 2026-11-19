@@ -1,3 +1,9 @@
+# Institutional website redesign
+
+- [x] Replace the portrait-led introduction with an architectural institutional hero and internal search; retain the original portrait in the office section.
+- [x] Add linked detailed practice sections, preserve the form and Reel gallery, add LinkedIn and corporate footer.
+- [x] Add readiness-only branded loading; keyboard search, three section destinations, WhatsApp handoff, mobile navigation and four viewport sizes verified, with 17 tests passing.
+
 # Final Reel gallery adjustment
 
 - [x] Remove embedded players, retain original covers and open each publication externally with an always-visible lower-left play overlay; desktop/tablet/mobile/narrow layouts and all four new-tab clicks verified, with five existing contact tests passing.

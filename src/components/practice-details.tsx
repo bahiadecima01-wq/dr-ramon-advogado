@@ -1,0 +1,31 @@
+import arquitetura from "@/assets/arquitetura.jpg";
+import contratos from "@/assets/contratos-imobiliarios.jpg";
+import familia from "@/assets/familia-patrimonio.jpg";
+import { ArrowUpRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { practiceAreas } from "@/lib/site-search";
+
+const images = [
+  { src: arquitetura, alt: "Arquitetura residencial contemporânea", width: 1280, height: 1600 },
+  { src: contratos, alt: "Documentos e análise de contratos imobiliários — imagem ilustrativa", width: 1024, height: 1280 },
+  { src: familia, alt: "Lar e patrimônio familiar — imagem ilustrativa", width: 1024, height: 1280 },
+];
+
+export function PracticeDetails({ contactUrl }: { contactUrl: string }) {
+  return <>{practiceAreas.map((area, index) => {
+    const image = images[index];
+    if (!image) return null;
+    return <section key={area.id} id={area.id} tabIndex={-1} className={`practice-section border-b border-navy-foreground/15 py-20 text-navy-foreground md:py-28 ${index === 1 ? "bg-petroleum-deep" : "bg-navy"}`}>
+      <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 lg:grid-cols-2 lg:gap-20">
+        <div className={index === 1 ? "lg:order-2" : ""}><img src={image.src} alt={image.alt} loading="lazy" width={image.width} height={image.height} className="aspect-[4/5] max-h-[620px] w-full object-cover" /></div>
+        <div>
+          <p className="flex items-center gap-4 text-xs font-medium uppercase text-accent"><span className="h-px w-10 bg-accent" />0{index + 1} / {area.label}</p>
+          <h2 className="mt-7 text-3xl leading-tight md:text-4xl">{area.title}</h2>
+          <p className="mt-6 leading-relaxed text-navy-foreground/80">{area.description}</p>
+          <ul className="mt-8 grid gap-x-6 sm:grid-cols-2">{area.services.map(service => <li key={service} className="flex gap-3 border-b border-navy-foreground/20 py-4 text-sm leading-relaxed text-navy-foreground/90"><span className="mt-2 size-1.5 shrink-0 bg-accent" />{service}</li>)}</ul>
+          <Button asChild variant="outline" className="mt-9 h-auto min-h-12 max-w-full whitespace-normal border-accent/60 bg-transparent px-5 py-3 text-navy-foreground hover:bg-accent hover:text-accent-foreground"><a href={contactUrl} target="_blank" rel="noopener noreferrer">Converse com nosso escritório<ArrowUpRight className="shrink-0" /></a></Button>
+        </div>
+      </div>
+    </section>;
+  })}</>;
+}

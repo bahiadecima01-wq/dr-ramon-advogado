@@ -16,9 +16,17 @@ import {
   X,
   ArrowRight,
   MessageCircle,
+  Instagram,
+  Linkedin,
+  ArrowUpRight,
+  ArrowDown,
 } from "lucide-react";
 import ramon from "@/assets/ramon-alves.png";
-import arquitetura from "@/assets/arquitetura.jpg";
+import corporateHero from "@/assets/arquitetura-institucional.jpg";
+import { SiteSearch } from "@/components/site-search";
+import { PracticeDetails } from "@/components/practice-details";
+import { BrandedLoading } from "@/components/branded-loading";
+import { practiceAreas, socialLinks } from "@/lib/site-search";
 import officialLogo from "@/assets/ramon-alves-logo-oficial.png";
 import { Button } from "@/components/ui/button";
 import { WhatsAppContactForm } from "@/components/whatsapp-contact-form";
@@ -65,7 +73,7 @@ export const Route = createFileRoute("/")({
     ],
     links: [
       { rel: "canonical", href: HOME_URL },
-      { rel: "preload", as: "image", href: ramon, fetchpriority: "high" },
+      { rel: "preload", as: "image", href: corporateHero, fetchpriority: "high" },
     ],
     scripts: [{ type: "application/ld+json", children: JSON.stringify(legalService) }],
   }),
@@ -74,9 +82,9 @@ export const Route = createFileRoute("/")({
 
 const nav = [
   ["Escritório", "#escritorio"],
-  ["Atuação", "#atuacao"],
-  ["Imobiliário", "#imobiliario"],
+  ["Áreas de Atuação", "#atuacao"],
   ["Diferenciais", "#diferenciais"],
+  ["Conteúdos", "#conteudos"],
   ["Contato", "#contato"],
 ] as const;
 
@@ -126,13 +134,10 @@ function Header() {
         <Logo />
         <nav aria-label="Navegação principal" className="hidden items-center gap-6 lg:flex">
           {nav.map(([l, h]) => (
-            <a key={h} href={h} className="text-xs uppercase tracking-[0.18em] text-brand-foreground/85 transition-colors hover:text-accent">
+            <a key={h} href={h} className="text-xs uppercase tracking-normal text-brand-foreground/85 transition-colors hover:text-accent">
               {l}
             </a>
           ))}
-          <a href={WA} target="_blank" rel="noopener noreferrer" className="border border-accent/60 px-5 py-2.5 text-xs uppercase tracking-[0.18em] text-accent transition-colors hover:bg-primary hover:text-primary-foreground">
-            WhatsApp
-          </a>
         </nav>
         <Button variant="ghost" size="icon" aria-label={open ? "Fechar menu" : "Abrir menu"} aria-expanded={open} aria-controls="menu-movel" className="text-accent hover:bg-primary lg:hidden" onClick={() => setOpen(!open)}>
           {open ? <X className="h-6 w-6 text-accent" /> : <Menu className="h-6 w-6 text-accent" />}
@@ -167,60 +172,44 @@ function SectionHead({ eyebrow, title, text, light }: { eyebrow: string; title: 
 function Index() {
   return (
     <div id="topo" className="bg-background text-foreground">
+      <BrandedLoading />
       <Header />
       <main>
 
-      {/* Hero */}
-      <section className="mx-auto grid max-w-7xl items-center gap-14 px-6 pt-32 pb-20 lg:grid-cols-[1.1fr_1fr] lg:pt-40 lg:pb-28">
-        <div className="reveal order-2 lg:order-1">
-          <p className="eyebrow flex items-center gap-4">
-            <span className="h-px w-10 bg-gold" />
-            Advocacia em Porto Seguro
-          </p>
-          <h1 className="mt-8 text-5xl leading-[1.05] text-primary md:text-6xl xl:text-7xl">
-            Segurança jurídica para proteger seu <em className="text-gold">patrimônio</em> e seus negócios.
-          </h1>
-          <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground">
-            Assessoria jurídica estratégica em Direito Imobiliário, Família e Sucessões. Atuação pautada pela excelência
-            técnica, transparência e atendimento personalizado.
-          </p>
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-            <Btn href={WA} external>Fale com um advogado</Btn>
-            <Btn href="#atuacao" variant="outline">Conheça nossa atuação</Btn>
-          </div>
-          <p className="mt-12 flex items-start gap-3 border-t border-border pt-6 text-sm text-muted-foreground">
-            <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-            Porto Seguro – Bahia | Atendimento presencial e online para todo o Brasil.
-          </p>
-        </div>
-        <div className="reveal order-1 lg:order-2">
-          <div className="relative mx-auto max-w-[18rem] sm:max-w-sm lg:mr-0 lg:ml-auto lg:max-w-[82%]">
-            <div className="absolute -right-4 -bottom-4 h-full w-full border border-gold md:-right-6 md:-bottom-6" />
-            <img
-              src={ramon}
-              alt="Advogado Ramon Alves"
-              fetchPriority="high"
-              className="relative h-auto w-full"
-              width={1265}
-              height={1244}
-            />
-            <div className="absolute -left-4 bottom-8 bg-primary px-6 py-4 md:-left-8">
-              <p className="font-serif text-xl text-primary-foreground">Ramon Alves</p>
-              <p className="text-[0.65rem] uppercase tracking-[0.3em] text-accent">Advogado</p>
-            </div>
+      {/* Institutional introduction */}
+      <section className="corporate-hero relative isolate mt-20 flex items-center text-primary-foreground">
+        <img src={corporateHero} alt="Fachada de arquitetura contemporânea — imagem ilustrativa" width={1920} height={1024} fetchPriority="high" className="absolute inset-0 -z-20 h-full w-full object-cover" />
+        <div className="hero-overlay absolute inset-0 -z-10" />
+        <div className="mx-auto w-full max-w-7xl px-6 py-10 md:py-20">
+          <p className="mb-6 flex items-center gap-4 text-xs font-medium uppercase text-accent"><span className="h-px w-10 bg-accent" />Advocacia em Porto Seguro</p>
+          <h1 className="max-w-3xl text-4xl font-medium leading-tight md:text-5xl lg:text-6xl">Ramon Alves Advocacia</h1>
+          <p className="mt-5 max-w-2xl font-serif text-2xl leading-snug text-primary-foreground md:text-3xl">Segurança jurídica para decisões que constroem o futuro.</p>
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-primary-foreground/90">Atuação jurídica pautada pela responsabilidade, atenção aos detalhes e soluções alinhadas às necessidades de cada cliente.</p>
+          <SiteSearch />
+          <div className="mt-8 flex flex-wrap items-center gap-6">
+            <Button asChild variant="ghost" className="h-auto px-0 py-2 text-primary-foreground hover:bg-transparent hover:text-accent"><a href="#atuacao">Conheça nossa atuação<ArrowDown className="size-4" /></a></Button>
+            <span className="hidden h-4 w-px bg-primary-foreground/40 sm:block" />
+            <Button asChild variant="ghost" className="h-auto px-0 py-2 text-primary-foreground hover:bg-transparent hover:text-accent"><a href={WA} target="_blank" rel="noopener noreferrer">Fale com nosso escritório<ArrowUpRight className="size-4" /></a></Button>
           </div>
         </div>
       </section>
 
-      <section id="solicitar-atendimento" className="border-t border-border bg-card py-16 md:py-20">
+      <section id="solicitar-atendimento" tabIndex={-1} className="border-t border-border bg-card py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-6"><WhatsAppContactForm /></div>
       </section>
 
       {/* Sobre */}
-      <section id="escritorio" className="border-t border-border bg-card py-24 md:py-32">
+      <section id="escritorio" tabIndex={-1} className="border-t border-border bg-card py-24 md:py-32">
         <div className="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-[1fr_1.2fr]">
-          <SectionHead eyebrow="O escritório" title="Assessoria jurídica com estratégia, transparência e confiança." />
+          <div>
+            <SectionHead eyebrow="O escritório" title="Assessoria jurídica com estratégia, transparência e confiança." />
+            <figure className="mt-10 max-w-[18rem]">
+              <img src={ramon} alt="Advogado Ramon Alves" width={1265} height={1244} loading="lazy" className="h-auto w-full" />
+              <figcaption className="mt-3 text-sm text-muted-foreground">Ramon Alves · Advogado</figcaption>
+            </figure>
+          </div>
           <div className="space-y-6 text-lg leading-relaxed text-foreground/80 lg:pt-14">
+            <p>Segurança jurídica para proteger seu patrimônio e seus negócios. Assessoria jurídica estratégica em Direito Imobiliário, Família e Sucessões. Atuação pautada pela excelência técnica, transparência e atendimento personalizado.</p>
             <p className="font-serif text-2xl leading-snug text-primary">
               A Ramon Alves Advocacia é um escritório localizado em Porto Seguro/BA, com atuação especializada em Direito e
               Contratos Imobiliários, Direito de Família e Sucessões.
@@ -238,7 +227,7 @@ function Index() {
       </section>
 
       {/* Áreas */}
-      <section id="atuacao" className="py-24 md:py-32">
+      <section id="atuacao" tabIndex={-1} className="py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-6">
           <SectionHead
             eyebrow="Atuação"
@@ -246,22 +235,18 @@ function Index() {
             text="Atuação jurídica especializada, com soluções personalizadas para diferentes necessidades."
           />
           <div className="mt-16 grid gap-px border border-border bg-border md:grid-cols-3">
-            {[
-              [Building2, "Direito Imobiliário", "Assessoria jurídica em negócios imobiliários, com foco na segurança das transações, proteção patrimonial e prevenção de riscos."],
-              [FileSignature, "Direito e Contratos Imobiliários", "Elaboração, análise e revisão de contratos, assessoria na compra e venda de imóveis e suporte jurídico em negociações imobiliárias."],
-              [Users, "Direito de Família e Sucessões", "Orientação jurídica em questões familiares e sucessórias, com atuação técnica, responsável e atenção às particularidades de cada situação."],
-            ].map(([Icon, t, d], i) => {
-              const I = Icon as typeof Building2;
-              return (
-                <article key={i} className="group bg-background p-10 transition-colors duration-500 hover:bg-primary">
-                  <div className="flex items-start justify-between">
-                    <I className="h-8 w-8 text-gold" strokeWidth={1.2} />
-                    <span className="font-serif text-3xl text-border transition-colors group-hover:text-gold/50">0{i + 1}</span>
-                  </div>
-                  <h3 className="mt-12 text-2xl text-primary transition-colors group-hover:text-primary-foreground">{t as string}</h3>
-                  <p className="mt-4 leading-relaxed text-muted-foreground transition-colors group-hover:text-primary-foreground/70">{d as string}</p>
-                </article>
-              );
+            {practiceAreas.map((area, i) => {
+              const Icon = [Building2, FileSignature, Users][i] ?? Building2;
+              return <article key={area.id} className="group relative bg-background transition-colors duration-300 hover:bg-primary">
+                <Button asChild variant="ghost" className="block h-full w-full whitespace-normal rounded-none p-8 text-left hover:bg-transparent lg:p-10">
+                  <a href={`#${area.id}`} aria-label={`Conheça ${area.label}`}>
+                    <span className="flex items-start justify-between"><Icon className="size-8 text-gold group-hover:text-accent" strokeWidth={1.2} /><span className="font-serif text-3xl text-primary/55 group-hover:text-accent">0{i + 1}</span></span>
+                    <h3 className="mt-10 text-2xl text-primary group-hover:text-primary-foreground">{area.label}</h3>
+                    <p className="mt-4 text-base font-normal leading-relaxed text-muted-foreground group-hover:text-primary-foreground/90">{area.summary}</p>
+                    <span className="mt-8 flex items-center gap-3 text-sm text-primary group-hover:text-primary-foreground">Saiba mais<ArrowUpRight className="size-4" /></span>
+                  </a>
+                </Button>
+              </article>;
             })}
           </div>
           <div className="mt-12">
@@ -270,41 +255,10 @@ function Index() {
         </div>
       </section>
 
-      {/* Imobiliário */}
-      <section id="imobiliario" className="bg-navy py-24 md:py-32">
-        <div className="mx-auto grid max-w-7xl items-center gap-16 px-6 lg:grid-cols-2">
-          <img src={arquitetura} alt="Arquitetura residencial contemporânea" loading="lazy" width={1280} height={1600} className="aspect-[4/5] w-full object-cover" />
-          <div>
-            <SectionHead
-              light
-              eyebrow="Direito Imobiliário"
-              title="Seu patrimônio merece segurança jurídica em cada etapa."
-              text="Decisões imobiliárias exigem atenção, planejamento e segurança. Conte com assessoria jurídica especializada para conduzir seus negócios com mais tranquilidade."
-            />
-            <ul className="mt-10 grid gap-x-8 sm:grid-cols-2">
-              {[
-                "Consultoria jurídica na aquisição de imóveis.",
-                "Assessoria em compra e venda de imóveis.",
-                "Elaboração e análise de contratos imobiliários.",
-                "Regularização de imóveis.",
-                "Consultoria preventiva em negócios imobiliários.",
-                "Orientação jurídica para proteção patrimonial.",
-              ].map((s) => (
-                <li key={s} className="flex gap-3 border-b border-navy-foreground/15 py-4 text-navy-foreground/85">
-                  <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rotate-45 bg-gold" />
-                  {s}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-10">
-              <Btn href={WA} external variant="gold">Converse com nosso escritório</Btn>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PracticeDetails contactUrl={WA} />
 
       {/* Diferenciais */}
-      <section id="diferenciais" className="py-24 md:py-32">
+      <section id="diferenciais" tabIndex={-1} className="py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-6">
           <SectionHead eyebrow="Diferenciais" title="Por que contar com a Ramon Alves Advocacia?" />
           <div className="mt-16 grid gap-12 sm:grid-cols-2 lg:grid-cols-5 lg:gap-8">
@@ -330,8 +284,18 @@ function Index() {
 
       <InstagramReels />
 
+      <section id="redes-sociais" className="border-t border-border bg-secondary py-16 md:py-20">
+        <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 px-6 lg:flex-row lg:items-center">
+          <div className="max-w-2xl"><p className="eyebrow">Canais digitais</p><h2 className="mt-5 text-3xl text-foreground md:text-4xl">Conecte-se com nosso escritório</h2><p className="mt-5 leading-relaxed text-muted-foreground">Acompanhe conteúdos, informações jurídicas e atualizações pelos nossos canais digitais.</p></div>
+          <div className="flex flex-wrap gap-4">
+            <Button asChild variant="outline" className="h-12 px-5"><a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer"><Instagram />Instagram<ArrowUpRight /></a></Button>
+            <Button asChild variant="outline" className="h-12 px-5"><a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn — perfil profissional de Ramon Alves"><Linkedin />LinkedIn<ArrowUpRight /></a></Button>
+          </div>
+        </div>
+      </section>
+
       {/* Contato */}
-      <section id="contato" className="border-t border-border bg-card py-24 md:py-32">
+      <section id="contato" tabIndex={-1} className="border-t border-border bg-card py-24 md:py-32">
         <div className="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-2">
           <div>
             <SectionHead
@@ -387,48 +351,20 @@ function Index() {
       {/* Footer */}
       </main>
       <footer className="bg-brand-surface pt-16 text-brand-foreground">
-        <div className="mx-auto grid max-w-7xl gap-12 px-6 md:grid-cols-4">
-          <div className="md:col-span-1">
-            <Logo />
-            <p className="mt-6 text-sm text-background/60">Porto Seguro – Bahia</p>
-          </div>
-          <div>
-            <p className="eyebrow">Navegação</p>
-            <ul className="mt-5 space-y-3 text-sm text-background/70">
-              {nav.map(([l, h]) => (
-                <li key={h}><a href={h} className="hover:text-gold">{l}</a></li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <p className="eyebrow">Áreas</p>
-            <ul className="mt-5 space-y-3 text-sm text-background/70">
-              <li>Direito Imobiliário</li>
-              <li>Contratos Imobiliários</li>
-              <li>Família e Sucessões</li>
-            </ul>
-          </div>
-          <div>
-            <p className="eyebrow">Contato</p>
-            <p className="mt-5 text-sm leading-relaxed text-background/70">
-              Telefone / WhatsApp: (73) 98866-2627
-              <br />
-              Edifício Palazzo Itália – Av. 22 de Abril, Sala 03 – Centro, Porto Seguro – BA.
-            </p>
-          </div>
+        <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-12 px-6 sm:grid-cols-2 lg:grid-cols-[1.3fr_0.85fr_1.15fr_1.1fr_0.75fr]">
+          <div><Logo /><p className="mt-6 max-w-xs text-sm leading-relaxed text-brand-foreground/85">Atuação jurídica com responsabilidade, técnica e compromisso com cada cliente.</p></div>
+          <div><p className="text-sm font-semibold text-accent">O Escritório</p><ul className="footer-links mt-6 space-y-3 text-sm"><li><a href="#escritorio">Quem Somos</a></li><li><a href="#atuacao">Áreas de Atuação</a></li><li><a href="#diferenciais">Diferenciais</a></li><li><a href="#contato">Contato</a></li></ul></div>
+          <div><p className="text-sm font-semibold text-accent">Áreas de Atuação</p><ul className="footer-links mt-6 space-y-3 text-sm leading-relaxed">{practiceAreas.map(area => <li key={area.id}><a href={`#${area.id}`}>{area.label}</a></li>)}</ul></div>
+          <div><p className="text-sm font-semibold text-accent">Contato</p><a href={WA} target="_blank" rel="noopener noreferrer" className="mt-6 flex items-center gap-2 text-sm text-brand-foreground hover:text-accent"><MessageCircle className="size-4 shrink-0" />(73) 98866-2627</a><p className="mt-4 text-sm leading-relaxed text-brand-foreground/85">Porto Seguro – Bahia<br />Edifício Palazzo Itália<br />Av. 22 de Abril, Sala 03 – Centro<br />CEP 45810-000</p></div>
+          <div><p className="text-sm font-semibold text-accent">Redes Sociais</p><ul className="footer-links mt-6 space-y-4 text-sm"><li><a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2"><Instagram className="size-4" />Instagram</a></li><li><a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn — perfil profissional de Ramon Alves" className="flex items-center gap-2"><Linkedin className="size-4" />LinkedIn</a></li></ul></div>
         </div>
-        <div className="mx-auto mt-14 flex max-w-7xl flex-col justify-between gap-4 border-t border-background/10 px-6 pt-8 text-xs text-background/50 sm:flex-row">
-          <p>© {new Date().getFullYear()} Ramon Alves Advocacia. Todos os direitos reservados.</p>
-          <a href="https://www.instagram.com/ramonalvesadvocacia/" target="_blank" rel="noopener noreferrer" className="text-accent">Instagram</a>
-        </div>
-        <div className="mt-8 w-full bg-background px-6 py-6 text-center text-sm text-foreground">
-          <a href="https://baze-mkt.vercel.app/" target="_blank" rel="noopener noreferrer" className="font-normal transition-opacity hover:opacity-80">Criado por <span className="font-bold text-primary">Baze Mkt</span></a>
-        </div>
+        <div className="mx-auto mt-14 max-w-7xl border-t border-brand-foreground/20 px-6 py-7 text-xs text-brand-foreground/80"><p>© {new Date().getFullYear()} Ramon Alves Advocacia. Todos os direitos reservados.</p></div>
+        <div className="w-full bg-background px-6 py-6 text-center text-sm text-foreground"><a href="https://baze-mkt.vercel.app/" target="_blank" rel="noopener noreferrer" className="font-normal transition-opacity hover:opacity-80">Criado por <span className="font-bold text-primary">Baze Mkt</span></a></div>
       </footer>
 
       {/* WhatsApp flutuante */}
       <a
-        href={WA}
+        href="https://wa.me/5573988662627"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Conversar pelo WhatsApp"
