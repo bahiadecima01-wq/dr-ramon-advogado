@@ -184,6 +184,7 @@
 section[id] { scroll-margin-top: 6rem; }
 .corporate-hero { min-height: min(680px, calc(100svh - 160px)); }
 .hero-overlay { background: var(--hero-overlay); }
+.hero-beach { filter: blur(2px); transform: scale(1.015); object-position: 50% 55%; }
 .practice-section { --gold: var(--accent); }
 .footer-links a { color: var(--brand-foreground); transition: color 180ms ease; }
 .footer-links a:hover { color: var(--accent); }

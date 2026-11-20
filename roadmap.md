@@ -1,5 +1,12 @@
 # Institutional website redesign
 
+# Client-requested targeted updates
+
+- [x] Replace hero with supplied beach photo, update founder title and separate practice cards without changing the section background.
+- [x] Replace real-estate and contract images, add mining practice section and search/card destinations.
+- [x] Add mining dropdown option and illustrative contact image; update displayed and structured postal code while preserving map location.
+- [x] Verify images, four anchor destinations, search, real WhatsApp handoff and desktop/tablet/mobile layouts; 21 tests passed with no browser errors.
+
 - [x] Replace the portrait-led introduction with an architectural institutional hero and internal search; retain the original portrait in the office section.
 - [x] Add linked detailed practice sections, preserve the form and Reel gallery, add LinkedIn and corporate footer.
 - [x] Add readiness-only branded loading; keyboard search, three section destinations, WhatsApp handoff, mobile navigation and four viewport sizes verified, with 17 tests passing.

@@ -26,6 +26,6 @@ describe("Public SEO rules", () => {
   it("uses the existing office contact information", () => {
     expect(legalService.telephone).toBe("+5573988662627");
     expect(legalService.address.addressLocality).toBe("Porto Seguro");
-    expect(legalService.address.postalCode).toBe("45810-000");
+    expect(legalService.address.postalCode).toBe("46054-515");
   });
 });

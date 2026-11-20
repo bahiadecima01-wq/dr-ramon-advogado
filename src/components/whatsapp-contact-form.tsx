@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { contactSchema, createContactWhatsAppUrl, formatBrazilianPhone, interestAreas } from "@/lib/whatsapp-contact";
+import consulta from "@/assets/consulta-juridica.jpg";
 
 export function WhatsAppContactForm() {
   const [name, setName] = useState("");
@@ -27,6 +28,7 @@ export function WhatsAppContactForm() {
         <MessageCircle className="h-7 w-7 text-primary" strokeWidth={1.5} />
         <h2 className="mt-5 text-4xl text-foreground">Solicite um atendimento</h2>
         <p className="mt-5 max-w-md leading-relaxed text-muted-foreground">Preencha as informações abaixo e entre em contato com nossa equipe pelo WhatsApp.</p>
+        <img src={consulta} alt="Discussão de documentos durante uma consulta jurídica — imagem ilustrativa" width={1536} height={1024} loading="lazy" className="mt-7 aspect-[3/2] w-full max-w-md object-cover" />
       </div>
       <form onSubmit={submit} noValidate className="space-y-6" aria-label="Solicite um atendimento">
         <div>

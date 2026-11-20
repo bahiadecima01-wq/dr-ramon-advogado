@@ -19,8 +19,13 @@ describe("institutional search and navigation", () => {
     expect(searchSite("direito aeronáutico")).toEqual([]);
     expect(searchSite("   ")).toEqual([]);
   });
-  it("assigns each of the three areas a unique dedicated anchor", () => {
-    expect(practiceAreas.map(area => area.id)).toEqual(["imobiliario", "contratos", "familia-sucessoes"]);
+  it("assigns all four areas a unique dedicated anchor", () => {
+    expect(practiceAreas.map(area => area.id)).toEqual(["imobiliario", "contratos", "familia-sucessoes", "direito-mineracao"]);
+  });
+  it("finds the new mining services at their dedicated destination", () => {
+    for (const term of ["Direito da Mineração", "direitos minerarios", "setor mineral"]) {
+      expect(searchSite(term).map(result => result.id)).toContain("direito-mineracao");
+    }
   });
   it("links the confirmed professional LinkedIn profile", () => {
     expect(socialLinks.linkedin).toBe("https://br.linkedin.com/in/dr-ramon-alves-6b8642175");

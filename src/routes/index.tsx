@@ -20,9 +20,10 @@ import {
   Linkedin,
   ArrowUpRight,
   ArrowDown,
+  Pickaxe,
 } from "lucide-react";
 import ramon from "@/assets/ramon-alves.png";
-import corporateHero from "@/assets/arquitetura-institucional.jpg";
+import beachHero from "@/assets/praia-apaga-fogo.png.asset.json";
 import { SiteSearch } from "@/components/site-search";
 import { PracticeDetails } from "@/components/practice-details";
 import { BrandedLoading } from "@/components/branded-loading";
@@ -38,7 +39,8 @@ const WA =
   encodeURIComponent(
     "Olá! Gostaria de obter informações sobre os serviços jurídicos do escritório Ramon Alves Advocacia.",
   );
-const ADDRESS =
+// Preserve the existing map query; the corrected postal code alone must not relocate the pin.
+const MAP_ADDRESS =
   "Edifício Palazzo Itália, Av. 22 de Abril, Sala 03, Centro, Porto Seguro - BA, 45810-000";
 
 export const Route = createFileRoute("/")({
@@ -73,7 +75,7 @@ export const Route = createFileRoute("/")({
     ],
     links: [
       { rel: "canonical", href: HOME_URL },
-      { rel: "preload", as: "image", href: corporateHero, fetchpriority: "high" },
+      { rel: "preload", as: "image", href: beachHero.url, fetchpriority: "high" },
     ],
     scripts: [{ type: "application/ld+json", children: JSON.stringify(legalService) }],
   }),
@@ -177,8 +179,8 @@ function Index() {
       <main>
 
       {/* Institutional introduction */}
-      <section className="corporate-hero relative isolate mt-20 flex items-center text-primary-foreground">
-        <img src={corporateHero} alt="Fachada de arquitetura contemporânea — imagem ilustrativa" width={1920} height={1024} fetchPriority="high" className="absolute inset-0 -z-20 h-full w-full object-cover" />
+      <section className="corporate-hero relative isolate mt-20 flex items-center overflow-hidden text-primary-foreground">
+        <img src={beachHero.url} alt="Paisagem costeira da Praia do Apaga Fogo" width={1281} height={768} fetchPriority="high" className="hero-beach absolute inset-0 -z-20 h-full w-full object-cover" />
         <div className="hero-overlay absolute inset-0 -z-10" />
         <div className="mx-auto w-full max-w-7xl px-6 py-10 md:py-20">
           <p className="mb-6 flex items-center gap-4 text-xs font-medium uppercase text-accent"><span className="h-px w-10 bg-accent" />Ramon Alves Advocacia</p>
@@ -201,7 +203,7 @@ function Index() {
             <SectionHead eyebrow="O escritório" title="Assessoria jurídica com estratégia, transparência e confiança." />
             <figure className="mt-10 max-w-[18rem]">
               <img src={ramon} alt="Advogado Ramon Alves" width={1265} height={1244} loading="lazy" className="h-auto w-full" />
-              <figcaption className="mt-3 text-sm text-muted-foreground">Ramon Alves · Advogado</figcaption>
+              <figcaption className="mt-3 text-sm text-muted-foreground">Ramon Alves · Sócio-fundador</figcaption>
             </figure>
           </div>
           <div className="space-y-6 text-lg leading-relaxed text-foreground/80 lg:pt-14">
@@ -230,10 +232,10 @@ function Index() {
             title="Áreas de atuação"
             text="Atuação jurídica especializada, com soluções personalizadas para diferentes necessidades."
           />
-          <div className="mt-16 grid gap-px border border-border bg-border md:grid-cols-3">
+          <div className="mt-16 grid gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4">
             {practiceAreas.map((area, i) => {
-              const Icon = [Building2, FileSignature, Users][i] ?? Building2;
-              return <article key={area.id} className="group relative bg-background transition-colors duration-300 hover:bg-primary">
+              const Icon = [Building2, FileSignature, Users, Pickaxe][i] ?? Building2;
+              return <article key={area.id} className="group relative border border-border bg-background transition-colors duration-300 hover:bg-primary">
                 <Button asChild variant="ghost" className="block h-full w-full whitespace-normal rounded-none p-8 text-left hover:bg-transparent lg:p-10">
                   <a href={`#${area.id}`} aria-label={`Conheça ${area.label}`}>
                     <span className="flex items-start justify-between"><Icon className="size-8 text-gold group-hover:text-accent" strokeWidth={1.2} /><span className="font-serif text-3xl text-primary/55 group-hover:text-accent">0{i + 1}</span></span>
@@ -312,7 +314,7 @@ function Index() {
                   <br />
                   Av. 22 de Abril, Sala 03 – Centro
                   <br />
-                  Porto Seguro – BA · CEP 45810-000
+                  Porto Seguro – BA · CEP 46054-515
                 </span>
               </p>
               <a href="tel:+5573988662627" className="flex items-center gap-3 text-foreground/80 hover:text-primary">
@@ -325,7 +327,7 @@ function Index() {
           </div>
           <iframe
             title="Mapa do escritório"
-            src={`https://www.google.com/maps?q=${encodeURIComponent(ADDRESS)}&output=embed`}
+            src={`https://www.google.com/maps?q=${encodeURIComponent(MAP_ADDRESS)}&output=embed`}
             className="min-h-[420px] w-full border border-border"
             loading="lazy"
           />
@@ -355,7 +357,7 @@ function Index() {
           <div><Logo /><p className="mt-6 max-w-xs text-sm leading-relaxed text-brand-foreground/85">Atuação jurídica com responsabilidade, técnica e compromisso com cada cliente.</p></div>
           <div><p className="text-sm font-semibold text-accent">O Escritório</p><ul className="footer-links mt-6 space-y-3 text-sm"><li><a href="#escritorio">Quem Somos</a></li><li><a href="#atuacao">Áreas de Atuação</a></li><li><a href="#diferenciais">Diferenciais</a></li><li><a href="#contato">Contato</a></li></ul></div>
           <div><p className="text-sm font-semibold text-accent">Áreas de Atuação</p><ul className="footer-links mt-6 space-y-3 text-sm leading-relaxed">{practiceAreas.map(area => <li key={area.id}><a href={`#${area.id}`}>{area.label}</a></li>)}</ul></div>
-          <div><p className="text-sm font-semibold text-accent">Contato</p><a href={WA} target="_blank" rel="noopener noreferrer" className="mt-6 flex items-center gap-2 text-sm text-brand-foreground hover:text-accent"><MessageCircle className="size-4 shrink-0" />(73) 98866-2627</a><p className="mt-4 text-sm leading-relaxed text-brand-foreground/85">Porto Seguro – Bahia<br />Edifício Palazzo Itália<br />Av. 22 de Abril, Sala 03 – Centro<br />CEP 45810-000</p></div>
+          <div><p className="text-sm font-semibold text-accent">Contato</p><a href={WA} target="_blank" rel="noopener noreferrer" className="mt-6 flex items-center gap-2 text-sm text-brand-foreground hover:text-accent"><MessageCircle className="size-4 shrink-0" />(73) 98866-2627</a><p className="mt-4 text-sm leading-relaxed text-brand-foreground/85">Porto Seguro – Bahia<br />Edifício Palazzo Itália<br />Av. 22 de Abril, Sala 03 – Centro<br />CEP 46054-515</p></div>
           <div><p className="text-sm font-semibold text-accent">Redes Sociais</p><ul className="footer-links mt-6 space-y-4 text-sm"><li><a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2"><Instagram className="size-4" />Instagram</a></li><li><a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn — perfil profissional de Ramon Alves" className="flex items-center gap-2"><Linkedin className="size-4" />LinkedIn</a></li></ul></div>
         </div>
         <div className="mx-auto mt-14 max-w-7xl border-t border-brand-foreground/20 px-6 py-7 text-xs text-brand-foreground/80"><p>© {new Date().getFullYear()} Ramon Alves Advocacia. Todos os direitos reservados.</p></div>

@@ -1,14 +1,16 @@
-import arquitetura from "@/assets/arquitetura.jpg";
-import contratos from "@/assets/contratos-imobiliarios.jpg";
+import arquitetura from "@/assets/casa-costeira-bahia.jpg";
+import contratos from "@/assets/assinatura-contrato-alves.png.asset.json";
 import familia from "@/assets/familia-patrimonio.jpg";
+import mineracao from "@/assets/mineracao-paisagem.jpg";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { practiceAreas } from "@/lib/site-search";
 
 const images = [
-  { src: arquitetura, alt: "Arquitetura residencial contemporânea", width: 1280, height: 1600 },
-  { src: contratos, alt: "Documentos e análise de contratos imobiliários — imagem ilustrativa", width: 1024, height: 1280 },
+  { src: arquitetura, alt: "Casa costeira de dois pavimentos com vegetação tropical e vista para o mar — imagem ilustrativa", width: 1122, height: 1402 },
+  { src: contratos.url, alt: "Assinatura de contrato com a marca Ramon Alves Advocacia", width: 768, height: 1152 },
   { src: familia, alt: "Lar e patrimônio familiar — imagem ilustrativa", width: 1024, height: 1280 },
+  { src: mineracao, alt: "Paisagem de extração mineral com formações geológicas e vegetação — imagem ilustrativa", width: 1122, height: 1402 },
 ];
 
 export function PracticeDetails({ contactUrl }: { contactUrl: string }) {
@@ -17,7 +19,7 @@ export function PracticeDetails({ contactUrl }: { contactUrl: string }) {
     if (!image) return null;
     return <section key={area.id} id={area.id} tabIndex={-1} className={`practice-section border-b border-navy-foreground/15 py-20 text-navy-foreground md:py-28 ${index === 1 ? "bg-petroleum-deep" : "bg-navy"}`}>
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 lg:grid-cols-2 lg:gap-20">
-        <div className={index === 1 ? "lg:order-2" : ""}><img src={image.src} alt={image.alt} loading="lazy" width={image.width} height={image.height} className="aspect-[4/5] max-h-[620px] w-full object-cover" /></div>
+        <div className={index % 2 === 1 ? "lg:order-2" : ""}><img src={image.src} alt={image.alt} loading="lazy" width={image.width} height={image.height} className={`aspect-[4/5] max-h-[620px] w-full ${area.id === "contratos" ? "object-contain" : "object-cover"}`} /></div>
         <div>
           <p className="flex items-center gap-4 text-xs font-medium uppercase text-accent"><span className="h-px w-10 bg-accent" />0{index + 1} / {area.label}</p>
           <h2 className="mt-7 text-3xl leading-tight md:text-4xl">{area.title}</h2>

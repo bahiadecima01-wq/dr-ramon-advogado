@@ -34,7 +34,7 @@ export const legalService = {
     streetAddress: "Edifício Palazzo Itália, Av. 22 de Abril, Sala 03, Centro",
     addressLocality: "Porto Seguro",
     addressRegion: "BA",
-    postalCode: "45810-000",
+    postalCode: "46054-515",
     addressCountry: "BR",
   },
   areaServed: [

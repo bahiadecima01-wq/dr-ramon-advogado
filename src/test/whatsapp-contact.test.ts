@@ -6,8 +6,8 @@ describe("Requested contact rules", () => {
   it("requires all three fields", () => {
     for (const field of ["name", "phone", "area"]) expect(contactSchema.safeParse({ ...valid, [field]: "" }).success).toBe(false);
   });
-  it("offers exactly the five requested areas", () => {
-    expect(interestAreas).toEqual(["Direito Imobiliário", "Direito Civil", "Contratos", "Família & Sucessões", "Mineração"]);
+  it("preserves existing options and adds Direito da Mineração", () => {
+    expect(interestAreas).toEqual(["Direito Imobiliário", "Direito Civil", "Contratos", "Família & Sucessões", "Mineração", "Direito da Mineração"]);
     expect(contactSchema.safeParse({ ...valid, area: "Outra" }).success).toBe(false);
   });
   it("validates Brazilian phone numbers with DDD", () => {
@@ -24,5 +24,12 @@ describe("Requested contact rules", () => {
   });
   it("selects only the four supplied Reels", () => {
     expect(selectedReels).toEqual(["DekiCJqhSB_", "DeNRZY1hsOj", "DdkS2kROr77", "DdumEBKutil"]);
+  });
+  it("includes the new mining selection in the existing WhatsApp message", () => {
+    const input = { ...valid, area: "Direito da Mineração" };
+    expect(contactSchema.safeParse(input).success).toBe(true);
+    const url = new URL(createContactWhatsAppUrl(input));
+    expect(url.pathname).toBe("/5573988662627");
+    expect(url.searchParams.get("text")).toContain("Área de interesse: Direito da Mineração");
   });
 });

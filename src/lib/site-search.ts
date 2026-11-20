@@ -20,6 +20,13 @@ export const practiceAreas = [
     description: "Questões familiares e sucessórias exigem atenção, responsabilidade e uma análise cuidadosa das particularidades de cada situação.",
     services: ["Divórcio e dissolução de união estável.", "Inventários e partilha de bens.", "Planejamento sucessório.", "Orientação sobre heranças.", "Questões patrimoniais familiares.", "Acompanhamento jurídico em demandas familiares."],
   },
+  {
+    id: "direito-mineracao", label: "Direito da Mineração",
+    summary: "Assessoria jurídica em questões relacionadas à atividade mineral, com atenção à regulamentação, aos contratos e à segurança jurídica das operações.",
+    title: "Segurança jurídica para atividades e negócios do setor mineral.",
+    description: "A atividade mineral envolve questões regulatórias, contratuais e patrimoniais que exigem análise jurídica cuidadosa. O escritório oferece orientação jurídica voltada às particularidades do setor, contribuindo para decisões mais seguras e responsáveis.",
+    services: ["Orientação jurídica sobre direitos minerários.", "Análise e elaboração de contratos relacionados à atividade mineral.", "Assessoria em negociações envolvendo recursos minerais.", "Orientação sobre questões regulatórias do setor mineral.", "Análise jurídica de direitos e obrigações relacionados à exploração mineral.", "Consultoria preventiva em negócios ligados à mineração."],
+  },
 ] as const;
 
 export const socialLinks = {

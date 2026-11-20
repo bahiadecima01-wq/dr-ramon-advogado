@@ -38,4 +38,5 @@ use the editor.
 - Keep WhatsApp contact validation and URL construction in a browser-safe tested helper; this user-chosen handoff has no storage or server submission.
 - Bundle manually selected Reel covers locally as accessible external publication links with decorative play overlays; avoid embedded players so the gallery remains portable and independent of Instagram playback restrictions.
 - Keep practice-area text and the client-only search index in one browser-safe module so search destinations reflect the rendered detailed sections.
+- Keep the map's established address query separate from displayed postal-code corrections so an unverified postal code cannot relocate the office pin.
 - Run the symbol-only intro once per document opening/refresh: CSS fades start with the document (1.2s ease-in-out reveal with 95%→100% scale, hold, 0.5s fade-out) and a three-second client timer removes the overlay; reduced motion removes fades, and anchor navigation never restarts it.

@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const interestAreas = ["Direito Imobiliário", "Direito Civil", "Contratos", "Família & Sucessões", "Mineração"] as const;
+export const interestAreas = ["Direito Imobiliário", "Direito Civil", "Contratos", "Família & Sucessões", "Mineração", "Direito da Mineração"] as const;
 export const whatsappNumber = "5573988662627";
 
 export function formatBrazilianPhone(value: string) {
